@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Box } from '@mui/material';
 import './App.css';
+import MessageList from './MessageList';
+import InputField from './InputField';
+import fetchChatGPTResponse from './fetchChatGPTResponse';
+import speakWithOpenAI from './speakWithOpenAI';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [messages, setMessages] = useState([]); // （1）
+
+  const handleSend = async (text) => { // （2）
+    // メッセージを追加する
+    setMessages((prevMessages) => [ // （3）
+      ...prevMessages,
+      { content: text, role: 'user' },
+    ]);
+
+    // // そのまま返す
+    // const response = text // （4）
+
+    // ChatGPTを使って返す
+    const response = await fetchChatGPTResponse(messages, text);
+
+    // メッセージを追加する
+    setMessages((prevMessages) => [ // （5）
+      ...prevMessages,
+      { content: response, role: 'assistant' },
+    ]);
+
+    // TTSで音声出力する
+    await speakWithOpenAI(response);
+  };
+
+  return ( // （6）
+    <Box className="App">
+      <MessageList messages={messages} />
+      <InputField onSend={handleSend} />
+    </Box>
   );
 }
 

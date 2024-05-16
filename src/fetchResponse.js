@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchChatGPTResponse = async (messages, text) => { // （1）
+const fetchResponse = async (messages, text) => { // （1）
   try {
     // OpenAI APIを使用してテキストから音声を生成
     const updatedMessages = [...messages, {role: 'user', content: text}]; // （2）
@@ -17,7 +17,14 @@ const fetchChatGPTResponse = async (messages, text) => { // （1）
     );
     console.log('Response:', response);
 
-    const assistantMessage = response.data.message; // （3）
+    // 返答を取得
+    let assistantMessage = ''; // ここから（3）
+
+    if (response.status === 200) {
+      assistantMessage = response.data.message;
+    } else {
+      assistantMessage = "エラーが発生しました";
+    } // ここまで（3）
 
     // 返答を返却する
     return assistantMessage; // （4）
@@ -28,4 +35,4 @@ const fetchChatGPTResponse = async (messages, text) => { // （1）
   }
 };
 
-export default fetchChatGPTResponse;
+export default fetchResponse;

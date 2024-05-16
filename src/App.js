@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import './App.css';
 import MessageList from './MessageList';
 import InputField from './InputField';
-import fetchChatGPTResponse from './fetchChatGPTResponse';
+import fetchResponse from './fetchResponse';
 import speakWithOpenAI from './speakWithOpenAI';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     // const response = text // （4）
 
     // ChatGPTを使って返す
-    const response = await fetchChatGPTResponse(messages, text);
+    const response = await fetchResponse(messages, text);
 
     // メッセージを追加する
     setMessages((prevMessages) => [ // （5）

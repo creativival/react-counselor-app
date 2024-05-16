@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-counselor-app/static/css/main.c40c262b.css",
-    "main.js": "/react-counselor-app/static/js/main.119d134c.js",
+    "main.js": "/react-counselor-app/static/js/main.ae20ba19.js",
     "static/js/453.cbd10844.chunk.js": "/react-counselor-app/static/js/453.cbd10844.chunk.js",
     "index.html": "/react-counselor-app/index.html",
     "main.c40c262b.css.map": "/react-counselor-app/static/css/main.c40c262b.css.map",
-    "main.119d134c.js.map": "/react-counselor-app/static/js/main.119d134c.js.map",
+    "main.ae20ba19.js.map": "/react-counselor-app/static/js/main.ae20ba19.js.map",
     "453.cbd10844.chunk.js.map": "/react-counselor-app/static/js/453.cbd10844.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c40c262b.css",
-    "static/js/main.119d134c.js"
+    "static/js/main.ae20ba19.js"
   ]
 }
